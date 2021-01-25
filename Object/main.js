@@ -62,11 +62,11 @@ console.log('random' in ellie);     //정의하지 않은 키
 //6. for..in vs for..of
 //for (key in obj)
 //console.clear();  콘솔창을 깨끗히 만드는 것
-for(key in ellie){      //향상된 for구문과 같다
+for(key in ellie){      //향상된 for구문과 같다 그러나 for..in구문은 객체의 key값엔 접근가능하나 key의 value에는 접근할 수 없다. 접근할려면 ellie[key]를 사용해야한다.
     console.log(key);
 }
 
-// for(value of iterable) 순서있는 데이터를 출력할 때
+// for(value of iterable) 순서가 있는 객체를 출력할 때 쓴다
 const array = [1,2,4,5];
 for(value of array){
     console.log(value);
