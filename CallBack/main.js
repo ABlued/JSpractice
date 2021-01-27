@@ -22,50 +22,96 @@ printWitdhDelay(() => console.log('async callback.'),2000);       //실행 순�
 
 
 //콜백 지옥 체험
+// class UserStorage{
+//     loginUser(id, password, onSuccess, onError){
+//         setTimeout(() => {
+//             if(
+//                 (id === 'ellie' && password === 'dream') ||
+//                 (id === 'coder' && password === 'academy')
+//             ){
+//                 onSuccess(id);
+//             } else {
+//                 onError(new Error('not found'));
+//             }
+//         },2000);
+//     }
+//     getRoles(user, onSuccess, onError){
+//         setTimeout(() => {
+//             if(user === 'ellie'){
+//                 onSuccess({ name: 'ellie', role: 'admin'});
+//             } else{
+//                 onError(new Error('no access'));
+//             }
+//         }, 1000);
+//     }
+// }
+
+// const userStorage = new UserStorage();
+// const id = propmt('enter your id');
+// const password = propmt('enter your password');
+// userStorage.loginUser(
+//     id,
+//     password,
+//     user => {
+//         userStorage.getRoles(
+//             user,
+//             userWithRole => {
+//                 alert(
+//                     `Hello ${userWithRole.name}, you have a ${userWithRole.role} role`
+//                 );
+//             },
+//             error => {
+//                 console.log(error);
+//             }
+//         );
+//     },
+//     error => {
+//         console.log(error);
+//     }
+// );
+
+
+
+//https://www.youtube.com/watch?v=JB_yU6Oe2eE&list=PLv2d7VI9OotTVOL4QmPfvJWPJvkmv6h-2&index=12
+//콜백함수 지옥 풀어보기
 class UserStorage{
-    loginUser(id, password, onSuccess, onError){
-        setTimeout(() => {
-            if(
-                (id === 'ellie' && password === 'dream') ||
-                (id === 'coder' && password === 'academy')
-            ){
-                onSuccess(id);
-            } else {
-                onError(new Error('not found'));
-            }
-        },2000);
+    loginUser(id, password){
+        return new Promise((resolve, reject) =>{
+            setTimeout(() => {
+                if(
+                    (id === 'ellie' && password === 'dream') ||
+                    (id === 'coder' && password === 'academy')
+                ){
+                    resolve(id);
+                } else {
+                    reject(new Error('not found'));
+                }
+            },2000);
+            
+        });
     }
-    getRoles(user, onSuccess, onError){
-        setTimeout(() => {
-            if(user === 'ellie'){
-                onSuccess({ name: 'ellie', role: 'admin'});
-            } else{
-                onError(new Error('no access'));
-            }
-        }, 1000);
+
+    getRoles(user){
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if(user === 'ellie'){
+                    resolve({name: 'ellie', role: 'admin'});
+                } else{
+                    reject(new Error('no access'));
+                }
+            }, 1000);
+        });
     }
 }
 
 const userStorage = new UserStorage();
-const id = propmt('enter your id');
-const password = propmt('enter your password');
-userStorage.loginUser(
-    id,
-    password,
-    user => {
-        userStorage.getRoles(
-            user,
-            userWithRole => {
-                alert(
-                    `Hello ${userWithRole.name}, you have a ${userWithRole.role} role`
-                );
-            },
-            error => {
-                console.log(error);
-            }
-        );
-    },
-    error => {
-        console.log(error);
-    }
-);
+const id = prompt('enter your id');
+const password = prompt('enter your password');
+userStorage.loginUser(id, password)
+.then(userStorage.getRoles)     //(user => userStorage.getRoles)
+.then(user => alert(`Hello ${user.name}, you have a ${user.role} role`))
+/*.then(user => alert(
+*    `Hello ${userWithRole.name}, you have a ${userWithRole.role} role`
+*))
+*/
+.catch(console.log());
