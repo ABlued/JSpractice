@@ -46,7 +46,7 @@ fruits.splice(1,1); //이러면 1번째 인덱스 데이터만 지우게 된다.
 console.log(fruits);
 fruits.splice(1,1,'melon','watermelon');   //만약 (1,0,'melon')으로 해놓으면 아무것도 삭제하지않은채로 인덱스 1에가서 melon을 추가할 수 있다.
 console.log(fruits);
-
+fruits.slice();
 const fruits2 = ['후르츠','mango'];
 const newFruits = fruits.concat(fruits2);       //fruits와 fruits2가 붙여져서 newFruits에 저장된다.
 console.log(newFruits);
