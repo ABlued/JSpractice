@@ -13,7 +13,7 @@ setInterval(() => {
 //     entries.push([i,v,this[i]])
 // },[10,20,30,40,50]);
 // console.log(entries);
-//arr.foorEach(callback[, thisArg])     //v : 배열에서 현재 처리 중인 요소 i : 배열에서 현재 처리 중인 요소의 인덱스
+// arr.foorEach(callback[, thisArg])     //v : 배열에서 현재 처리 중인 요소 i : 배열에서 현재 처리 중인 요소의 인덱스
 //thisArg : callback을 실행할 때 this로서 사용하는 값
 
 //콜백함수는 함수이다. 메소드가 될 수 없다.
@@ -29,5 +29,22 @@ var obj = {
         }
     }
 };
-obj.logValues(1, 2);
-arr.forEach(obj.logValues);
+console.log(obj.logValues(1,2));
+console.log(arr.forEach(obj.logValues));
+
+/**
+ * 콜백함수의 특징
+ * 1. 다른 함수(A)의 매개변수로
+ * 콜백함수(B)를 전달하면,
+ * A가 B의 제어권을 갖게 된다.
+ * 
+ * 2. 특별한 요청(bind)이 없는 한
+ * A에 미리 정해진 방식에 따라 B를 호출한다.
+ * 
+ * 3. 미리 정해진 방식이란,
+ * this에 무엇을 바인딩할지,
+ * 매개변수에는 어떤 값들을 지정할지
+ * 어떤 타이밍에 콜백을 호출할지 등이다.
+ * 
+ * 4. 콜백은 함수이다. 
+ */
