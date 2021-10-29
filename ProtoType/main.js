@@ -48,3 +48,26 @@ arr.toString = function(){
 console.log(arr.toString());        //자신이 만든 toString함수가 실행
 console.log(arr.__proto__.toString.call(arr));      //String객체의 toString함수가 실행
 console.log(arr.__proto__.__proto__.toString.call(arr));        //Object객체의 toString함수가 실행
+
+var obj = {
+    a: 1,
+    b: {
+        c: 'c'
+    },
+    d: [5,6,7],
+    e: function () {}
+};
+
+Object.prototype.toString = function () {
+    var res = [];
+    for(var key in this){
+        res.push(key + ': ' + this[key].toString());
+    }
+    return '{' + res.join(', ') + '}';
+}
+
+Array.prototype.toString = function () {
+    return '[' + this.join(', ') + ']';
+}
+
+console.log(obj.toString());
