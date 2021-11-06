@@ -102,7 +102,7 @@ triangle.draw();
 console.log(triangle.getArea());
 
 
-//6. Class checking: instanceOf  자바 문법과 비슷하다.
+//6. Class checking: instanceOf  자바 문법과 비슷하다.`
 console.log(rectangle instanceof Rectangle);        //true
 console.log(triangle instanceof Rectangle);         //false
 console.log(triangle instanceof Triangle);          //true

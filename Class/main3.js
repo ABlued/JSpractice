@@ -56,3 +56,18 @@ Employee.prototype.getPosition = function(){
 }
 var gomu1 = new Employee('고무', 30, 'CEO');
 console.dir(gomu1);
+
+var extendClass = (function(){
+    function Bridge1() {
+        return function (Parent, Child) {
+            Bridge1.prototype = Parent.prototype;
+            Child.prototype = new Bridge1();
+            Child.prototype.constructor = Child;
+        }
+    }
+})();
+
+extendClass(Person,Employee);
+Employee.prototype.getPosition = function () {
+    return this.position;
+}
