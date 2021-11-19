@@ -33,3 +33,6 @@ console.log(square); // [Function: anonymous]
 const regExp = new RegExp(/ab+c/i);
 console.log(typeof regExp); // object
 console.log(regExp); // /ab+c/i
+
+// 반드시 Object 생성자 함수를 사용해 빈 객체를 생성해야 하는 것은 아니다. 객체를 생성하는 방법은 객체 리터럴을 사용하는 것이 더 간편하다.
+// Object 생성자 함수를 사용해 객체를 생성하는 방식은 특별한 이유가 없다면 그다지 유용해 보이지 않는다.
