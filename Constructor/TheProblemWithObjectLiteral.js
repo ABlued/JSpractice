@@ -41,3 +41,13 @@ const Circle4 = new Circle(10);
 
 console.log(Circle3.getDiameter()); // 10
 console.log(Circle4.getDiameter()); // 20
+
+// 근데 여기서 주의할 점은 new 연산자를 붙여야 한다는 것이다.
+// new 연산자를 붙이지 않을 시 Circle 함수는 생성자 함수가 아닌 일반 함수로 동작된다.
+
+const Circle5 = Circle(15);
+
+console.log(Circle5); // undefined
+// 일반 함수로서 호출된 Circle 내의 this는 전역 객체를 가리킨다.
+// 그래서 this.radius -> window.radius -> radius가 되어 참조할 수 있게 된다.
+console.log(radius); // 15
