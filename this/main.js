@@ -99,7 +99,7 @@ var callback =  function(){
 var obj1 = {
     p: 1,
     q: function(cb){
-        cb();       //window 객체가 나온다. cb.call(this)로 하면은 obj1이 this가 된다.
+        cb.call(this);       //window 객체가 나온다. cb.call(this)로 하면은 obj1이 this가 된다.
     }
 };
 obj1.q(callback);
