@@ -15,14 +15,15 @@ const promise = new Promise((resolve, reject) => {
   console.log('doing something...');
   setTimeout(() => {
     resolve('ellie'); //일이 정상적으로 끝마치게 되면 resolve라는 콜백함수를 호출하면 된다.
-    //reject(new Error('no network'));  //일이 비정상적으로 끝마치게 되면 reject라는 콜백함수를 호출하면 된다.
+    // reject(new Error('no network')); //일이 비정상적으로 끝마치게 되면 reject라는 콜백함수를 호출하면 된다.
   }, 2000);
 });
 
 //2. Consumers: then, catch, finally로 받아올 수 있음
-//  promise.then((value) => {      //promise가 정상적으로 수행하게되면 호출된다. 여기서 value는 promise에서 정상적으로 받아온 값('ellie')이다.
-//     console.log(value);
-//  })
+promise.then((value) => {
+  //promise가 정상적으로 수행하게되면 호출된다. 여기서 value는 promise에서 정상적으로 받아온 값('ellie')이다.
+  console.log(value);
+});
 promise
   .then((value) => console.log(value))
   .catch((error) => {
