@@ -21,15 +21,11 @@ const creatorMap = {
   div: createDiv,
 };
 
-function createElement(type, props) {
-  return creatorMap[type](props);
-}
+const coupler = (map) => (type, props) => map[type](props);
+const createElement = coupler(creatorMap);
 
 /**
- * 아까보다는 변경에 용이한 구조이다.
- * createH1 로직이 달라지면 createH1만 테스트하면 되기 때문이다.
- * 하지만 이 구조의 단점이 있다. 추가에 취약한 구조이다.
- * 이 상태에서 span 태그 추가 기능을 넣으면 createElement 코드가 수정되며 그와 상관없는 createH1과 createDiv 함수도 테스트를 해야한다.
+ * coupler를 통해 creatorMap과의 의존성을 끊었고 외부로 제공하는 인터페이스는 그대로 유지되었다.
  */
 
 document.querySelector('#root').appendChild(createElement('h1', {}));
