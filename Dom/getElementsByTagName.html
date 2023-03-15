@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li id="apple">Apple</li>
+    <li id="banana">Banana</li>
+    <li id="orange">Orange</li>
+  </ul>
+  <ul id="fruits">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Orange</li>
+  </ul>
+
+  <script>
+    // Document.Prototype/Element.prototype.getElementsByTagName 메서드는 인수로 전달한 태그 이름을 갖는 모든 요소 노드들을 탐색하여 반환한다.
+    const $elems = document.getElementsByTagName('li');
+
+    // getElementsByTagName 메서드가 반환하는 DOM 컬렉션 객체인 HTMLCollection 객체는 유사 배열 객체이면서 이터러블이다.
+    [...$elems].forEach(elem => { elem.style.color = 'red' })
+
+    // HTML 문서의 모든 요소 노드를 취득하려면 인수로 *을 전달한다
+    const $all = document.getElementsByTagName('*')
+
+    // getElementsByTagName 메서드는 Document.prototype에 정의된 메서드와 Element.prototype에 정의된 메서드가 있다.
+    // Document.prototype.getElementsByTagName 메서드는 DOM의 루트 노드인 문서 노드, 즉 document를 통해 호출하며 DOM 전체에서 요소 노드를 탐색하여 반환한다.
+    // 하지만 Element.prototype.getElementsByTagName 메서드는 특정 요소 노드를 통해 호출하며, 특정 요소 노드의 자손 노드 중에서 요소 노드를 탐색하여 반환한다.
+
+    const $fruits = document.getElementByTagName('fruits');
+    const $lisFromFruits = $fruits.getElementsByTagName('li');
+  </script>
+</body>
+
+</html>

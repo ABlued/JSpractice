@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li class="fruit apple">Apple</li>
+    <li class="fruit banana">Banana</li>
+    <li class="fruit orange">Orange</li>
+  </ul>
+
+  <ul id="fruits">
+    <li class="apple">Apple</li>
+    <li class="banana">Banana</li>
+    <li class="orange">Orange</li>
+  </ul>
+  <script>
+    // Document.prototype/ Element.prototype.getElementsByClassName 메서드는 인수로 전달한 class 어트리뷰트 값을 갖는 모든 요소 노드들을 탐색하여 HTMLCollection 객체를 반환한다.
+    const $elems = document.getElementsByClassName('fruit');
+    [...$elems].forEach(elem => { elem.style.color = 'red' });
+
+    // 인수로 전달할 class 값은 공백으로 구분하여 여러 개의 class를 지정할 수 있다.
+    const $apples = document.getElementsByClassName('fruit apple');
+    [...$apples].forEach(elem => { elem.style.color = 'blue'; });
+
+    // Element.prototype.getElementsByClassName 메서드는 특정 요소 노드를 통해 호출하며 특정 요소 노드의 자손 노드 중에서 요소 노드를 탐색하여 반환한다.
+    const $fruits = document.getElementById('fruits');
+    const $bananasFromFruits = $fruits.getElementsByClassName('banana');
+  </script>
+</body>
+
+</html>
